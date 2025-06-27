@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Soldier & Weapon Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #1e293b;
+        padding: 30px 40px;
+        border-radius: 12px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2rem;
+      }
+
+      form {
+        display: grid;
+        gap: 20px;
+      }
+
+      fieldset {
+        border: 2px solid white;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: #2e3b4e;
+        margin: 0;
+      }
+
+      legend {
+        padding: 0 12px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #fff;
+      }
+
+      label {
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 6px;
+        font-weight: 500;
+        color: #d6e0f0;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #555;
+        background-color: #1a1f2e;
+        color: #fff;
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: #5eead4;
+        box-shadow: 0 0 6px rgba(94, 234, 212, 0.5);
+        outline: none;
+      }
+
+      input[type="checkbox"],
+      input[type="radio"] {
+        width: auto;
+        margin-right: 10px;
+        transform: scale(1.2);
+      }
+
+      .form-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        background: #5eead4;
+        color: #000;
+        font-weight: bold;
+        font-size: 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+      }
+
+      button:hover {
+        background: #38b2ac;
+        transform: scale(1.05);
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        button {
+          font-size: 0.9rem;
+          padding: 8px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Soldier & Weapon Registration</h1>
+
+      <form action="/submit" method="post" enctype="multipart/form-data">
+        <fieldset>
+          <legend>Soldier Information</legend>
+
+          <label for="id">Soldier ID <span style="color: rgb(85, 15, 48)">*</span></label>
+          <input type="number" id="id" name="soldier_id" required />
+
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="full_name" required />
+
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="dob" />
+
+          <label for="time_enlisted">Time Enlisted</label>
+          <input type="time" id="time_enlisted" name="time_enlisted" />
+
+          <label for="rank">Rank</label>
+          <select id="rank" name="rank">
+            <option value="private">Private</option>
+            <option value="sergeant">Sergeant</option>
+            <option value="lieutenant">Lieutenant</option>
+            <option value="captain">Captain</option>
+            <option value="major">Major</option>
+          </select>
+
+          <label>
+            <input type="checkbox" id="active" name="active_duty" />
+            Active Duty
+          </label>
+
+          <label>Gender</label>
+          <label><input type="radio" name="gender" value="male" /> Male</label>
+          <label
+            ><input type="radio" name="gender" value="female" /> Female</label
+          >
+          <label
+            ><input type="radio" name="gender" value="other" /> Other</label
+          >
+
+          <label for="photo">Upload Photo</label>
+          <input type="file" id="photo" name="photo" />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" />
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" />
+
+          <label for="homepage">Homepage</label>
+          <input type="url" id="homepage" name="homepage" />
+
+          <label for="color">Favorite Camouflage Color</label>
+          <input type="color" id="color" name="fav_color" />
+
+          <label for="salary">Expected Monthly Salary</label>
+          <input
+            type="range"
+            id="salary"
+            name="salary_expectation"
+            min="1000"
+            max="10000"
+          />
+
+          <label for="search">Search Unit Name</label>
+          <input type="search" id="search" name="search_unit" />
+
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            autocomplete="username"
+          />
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            autocomplete="new-password"
+          />
+        </fieldset>
+
+        <fieldset>
+          <legend>Weapon Information</legend>
+
+          <label for="weapon_type">Weapon Type</label>
+          <select id="weapon_type" name="weapon_type">
+            <option value="rifle">Rifle</option>
+            <option value="handgun">Handgun</option>
+            <option value="grenade">Grenade</option>
+            <option value="sniper">Sniper Rifle</option>
+            <option value="rocket">Rocket Launcher</option>
+          </select>
+
+          <label for="weapon_serial">Weapon Serial Number</label>
+          <input type="text" id="weapon_serial" name="weapon_serial" />
+
+          <label for="acquisition_date">Acquisition Date</label>
+          <input
+            type="datetime-local"
+            id="acquisition_date"
+            name="acquisition_date"
+          />
+
+          <label for="ammo_count">Ammo Count</label>
+          <input type="number" id="ammo_count" name="ammo_count" min="0" />
+
+          <label>
+            <input type="checkbox" id="safety_check" name="safety_check" />
+            Safety Check Passed
+          </label>
+
+          <label for="weapon_notes">Weapon Notes</label>
+          <textarea
+            id="weapon_notes"
+            name="weapon_notes"
+            rows="5"
+            placeholder="Enter any relevant details..."
+          ></textarea>
+        </fieldset>
+
+        <fieldset>
+          <legend>Confirmation</legend>
+          <label>
+            <input type="checkbox" name="confirm" required />
+            I confirm that all information provided is accurate.
+          </label>
+        </fieldset>
+
+        <div class="form-buttons">
+          <button type="submit">Register Soldier</button>
+          <button type="reset">Reset Form</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
